@@ -1,13 +1,19 @@
 class Solution {
     public int numberOfBeams(String[] bank) {
         int ans = 0;
-        int first = bank[0].replace("0","").length();
+        int first = nums(bank[0]);
         for(int i = 1; i < bank.length; i++){
-            if(bank[i].replace("0","").length() != 0){
-                ans += first * bank[i].replace("0","").length();
-                first = bank[i].replace("0","").length();
+            if(nums(bank[i]) != 0){
+                ans += first * nums(bank[i]);
+                first = nums(bank[i]);
             }
         }
         return ans;
+    }
+    int nums(String s) {
+        int res = 0;
+        for (int i = 0; i < s.length(); i++)
+            res += (s.charAt(i) - '0');
+        return res;
     }
 }
